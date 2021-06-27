@@ -1,1 +1,95 @@
-bbbbbbbbbb
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: blue;
+      }
+     
+      .nube {
+        width: 350px;
+        height: 60px;
+
+        background: #f2f9fe;
+        background: linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+
+        border-radius: 100px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+
+        position: relative;
+        margin: 120px auto 20px;
+      }
+
+      .nube:after,
+      .nube:before {
+        content: "";
+        position: absolute;
+        background: #f2f9fe;
+        z-index: -1;
+      }
+
+      .nube:after {
+        width: 300px;
+        height: 60px;
+        top: -50px;
+        left: 150px;
+
+        border-radius: 100px;
+      }
+
+      .nube:before {
+        width: 240px;
+        height: 60px;
+        top: -90px;
+        right: 50px;
+        border-radius: 200px;
+
+      }
+      .nube-una{
+        float:left;
+        top:150px;
+        animation: move-derecha 4s forwards;
+
+      }
+      .nube-dos{
+        float:right;
+        animation: move-izquierda 7s forwards;
+        animation-delay: 3s;
+      }
+      .nube-tres{
+        float:left;
+        top:350px;
+        animation: move-derecha 7s forwards;
+        animation-delay: 3s;
+      }
+      @keyframes move-derecha{
+          0%{
+            right:0%;
+          }
+          100%{
+            right:-120%;
+          }
+      }
+      @keyframes move-izquierda{
+          0%{
+            left:0%;
+          }
+          100%{
+            left:-120%;
+          }
+      }
+    </style>
+  </head>
+  <body>
+  
+      <div  class="nube nube-una"></div>
+      <div  class="nube nube-dos"></div>
+      <div  class="nube nube-tres"></div>
+
+  </body>
+</html>

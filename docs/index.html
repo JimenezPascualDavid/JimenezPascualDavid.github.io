@@ -1,13 +1,448 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    Portafolio
-    <a href="2.html" target="_blank" rel="noopener noreferrer">pulsame</a>
-</body>
+    <style>
+      @font-face {
+        src: url("fonts/Minecraft.ttf") format("truetype");
+        font-style: normal;
+        font-weight: normal;
+        font-family: minecraft;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        animation: time 22s forwards;
+        animation-duration: 12s;
+      }
+      @keyframes time {
+        0% {
+          background-color: rgb(20, 20, 124);
+        }
+        50% {
+          background-color: rgb(20, 20, 219);
+        }
+        100% {
+          background-color: rgb(255, 255, 36);
+        }
+      }
+      #animacion {
+        height: 100vh;
+      }
+      #cielo {
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .estrella {
+        height: 12px;
+        width: 12px;
+        background-color: white;
+        clip-path: polygon(
+          50% 0%,
+          61% 35%,
+          98% 35%,
+          68% 57%,
+          79% 91%,
+          50% 70%,
+          21% 91%,
+          32% 57%,
+          2% 35%,
+          39% 35%
+        );
+        animation: luz 3s;
+        animation-iteration-count: 4;
+      }
+      @keyframes luz {
+        0% {
+          background-color: white;
+        }
+        100% {
+          filter: blur(6px);
+          background-color: white;
+        }
+      }
+
+      .estrella-una {
+        position: relative;
+        top: 22px;
+      }
+      .estrella-dos {
+        position: relative;
+        top: 102px;
+        left: 300px;
+      }
+      .estrella-tres {
+        position: relative;
+        top: 302px;
+        left: 600px;
+      }
+      .estrella-cuatro {
+        position: relative;
+        top: 302px;
+        right: 50px;
+      }
+      .estrella-cinco {
+        position: relative;
+        top: 102px;
+        right: 200px;
+      }
+      .estrella-seis {
+        position: relative;
+        top: 42px;
+        right: 610px;
+      }
+
+      .nube {
+        width: 350px;
+        height: 60px;
+
+        background: #f2f9fe;
+        background: linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+
+        border-radius: 100px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+
+        position: relative;
+        margin: 120px auto 20px;
+      }
+
+      .nube:after,
+      .nube:before {
+        content: "";
+        position: absolute;
+        background: #f2f9fe;
+        z-index: -1;
+      }
+
+      .nube:after {
+        width: 300px;
+        height: 60px;
+        top: -50px;
+        left: 150px;
+        box-shadow: inset 0 -10px 10px -10px rgb(141, 140, 140);
+        border-radius: 100px;
+      }
+
+      .nube:before {
+        width: 240px;
+        height: 60px;
+        top: -90px;
+        right: 50px;
+        border-radius: 200px;
+        box-shadow: inset 0 -10px 10px -10px rgb(141, 140, 140);
+      }
+      .nube-una {
+        float: left;
+        top: 150px;
+        animation: move-izquierda 7s ease-out forwards;
+        animation-delay: 1s;
+      }
+      .nube-dos {
+        float: right;
+        animation: move-derecha 12s ease-out forwards;
+        animation-delay: 3s;
+      }
+      .nube-tres {
+        float: left;
+        top: 350px;
+        animation: move-izquierda 15s ease-out forwards;
+        animation-delay: 5s;
+      }
+      @keyframes move-derecha {
+        0% {
+          right: 0%;
+        }
+        100% {
+          right: -120%;
+        }
+      }
+      @keyframes move-izquierda {
+        0% {
+          left: 0%;
+        }
+        100% {
+          left: -120%;
+        }
+      }
+
+      #sol {
+        height: 400px;
+        width: 400px;
+        left: 30%;
+        top: 100px;
+        position: relative;
+        clip-path: polygon(
+          50% 0%,
+          80% 10%,
+          100% 35%,
+          100% 70%,
+          80% 90%,
+          50% 100%,
+          20% 90%,
+          0% 70%,
+          0% 35%,
+          20% 10%
+        );
+        animation-name: cicle;
+        animation-duration: 20s;
+        animation-iteration-count: forwards;
+        background-color: transparent;
+      }
+      #sol::before {
+        content: "";
+        display: block;
+        height: 410px;
+        width: 320px;
+        clip-path: circle(50%);
+        background-color: rgb(155, 13, 13);
+        clip-path: polygon(
+          50% 0%,
+          80% 10%,
+          100% 35%,
+          100% 70%,
+          80% 90%,
+          50% 100%,
+          20% 90%,
+          0% 70%,
+          0% 35%,
+          20% 10%
+        );
+        opacity: 0.3;
+      }
+      #sol::after {
+        content: "";
+        display: block;
+        height: 410px;
+        width: 320px;
+        clip-path: circle(50%);
+        background-color: black;
+        clip-path: polygon(
+          50% 0%,
+          80% 10%,
+          100% 35%,
+          100% 70%,
+          80% 90%,
+          50% 100%,
+          20% 90%,
+          0% 70%,
+          0% 35%,
+          20% 10%
+        );
+        opacity: 0.5;
+      }
+      @keyframes cicle {
+        0% {
+          background-color: rgb(248, 248, 244);
+          top: 600px;
+          left: 30%;
+        }
+        60% {
+          background-color: rgb(246, 247, 210);
+          top: 100px;
+          left: 30%;
+        }
+        70% {
+          background-color: rgb(231, 238, 138);
+        }
+        100% {
+          background-color: rgb(231, 235, 21);
+        }
+      }
+      #tierra {
+        height: 60vh;
+      }
+      #suelo {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      svg {
+        bottom: 0;
+        position: fixed;
+      }
+      .planta {
+        display: inline-flex;
+      }
+      .tallo {
+        height: 100px;
+        width: 10px;
+        background-color: yellowgreen;
+        border-top: 20% solid yellowgreen;
+        margin-top: 55px;
+        animation: plants 10s forwards;
+      }
+      .izq {
+        border-top-right-radius: 77%;
+        border-left: 20% solid rgb(101, 145, 15);
+        transform: rotate(-10deg);
+      }
+      .cent {
+        border-radius: 55% 55%;
+        border-left: 20% solid rgb(101, 145, 15);
+      }
+      .der {
+        border-top-left-radius: 77%;
+        border-right: 20% solid rgb(101, 145, 15);
+        transform: rotate(10deg);
+      }
+      .planta-uno {
+        position: relative;
+        top: 100px;
+        left: 200px;
+      }
+      .planta-dos {
+        position: relative;
+        top: 180px;
+        left: 700px;
+      }
+      .planta-tres {
+        position: relative;
+        top: 50px;
+        left: 1000px;
+      }
+      @keyframes plants {
+        0% {
+          background-color: rgb(22, 22, 22);
+        }
+        50% {
+          background-color: rgb(49, 49, 49);
+        }
+        80% {
+          background-color: yellowgreen;
+        }
+        100% {
+          background-color: rgb(109, 151, 23);
+        }
+      }
+      #sprite {
+        height: 96px;
+        width: 89px;
+        position: fixed;
+        right: -100px;
+        top: 500px;
+        background-image: url(human.png);
+        animation: andar steps(10) 9.5s none;
+        animation-delay: 1s;
+      }
+      @keyframes andar {
+        0% {
+          background-position: 0px;
+        }
+        100% {
+          background-position: -899px;
+          transform: translate(-340px, -170px);
+        }
+      }
+
+      #sprite2 {
+        height: 96px;
+        width: 89px;
+        position: fixed;
+        right: 260px;
+        top: 325px;
+        background-image: url(back1.png);
+        animation: mostrar 8s forwards;
+        animation-delay: 10s;
+        opacity: 0;
+      }
+      @keyframes mostrar {
+        100% {
+          opacity: 1;
+        }
+      }
+      #autor {
+        top: 30%;
+        width: 1000px;
+        margin: 0 auto;
+        position: fixed;
+        text-align: center;
+      }
+      p {
+        font-family: minecraft;
+        font-size: 40px;
+        color: white;
+        text-shadow: 2px 6px 2px rgb(3, 3, 3);
+        animation: autor 4s forwards;
+        animation-delay: 14s;
+        opacity:0;
+      }
+      @keyframes autor {
+       
+        70% {
+          opacity:1;
+        }
+        75% {
+          opacity:1;
+        }
+        80% {
+          opacity:0;
+        }
+        85% {
+          opacity:1;
+        }
+        90%{
+          opacity:0;
+        }
+        100% {
+          opacity:1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="animacion">
+      <div id="cielo">
+        <div class="estrella estrella-una"></div>
+        <div class="estrella estrella-dos"></div>
+        <div class="estrella estrella-tres"></div>
+        <div class="nube nube-una"></div>
+        <div id="sol"></div>
+        <div class="nube nube-dos"></div>
+        <div class="nube nube-tres"></div>
+        <div class="estrella estrella-cuatro"></div>
+        <div class="estrella estrella-cinco"></div>
+        <div class="estrella estrella-seis"></div>
+      </div>
+      <div id="tierra">
+        <div class="planta planta-uno">
+          <div class="tallo izq"></div>
+          <div class="tallo cent"></div>
+          <div class="tallo der"></div>
+        </div>
+        <div class="planta planta-dos">
+          <div class="tallo izq"></div>
+          <div class="tallo cent"></div>
+          <div class="tallo der"></div>
+        </div>
+        <div class="planta planta-tres">
+          <div class="tallo izq"></div>
+          <div class="tallo cent"></div>
+          <div class="tallo der"></div>
+        </div>
+
+        <div id="sprite"></div>
+        <div id="sprite2"></div>
+        <div id="suelo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path
+              fill="#130E10"
+              fill-opacity="1"
+              d="M0,192L30,192C60,192,120,192,180,170.7C240,149,300,107,360,122.7C420,139,480,213,540,245.3C600,277,660,267,720,250.7C780,235,840,213,900,176C960,139,1020,85,1080,74.7C1140,64,1200,96,1260,133.3C1320,171,1380,213,1410,234.7L1440,256L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div id="autor">
+      <p>David Jimenez Pascual</p>
+    </div>
+  </body>
 </html>

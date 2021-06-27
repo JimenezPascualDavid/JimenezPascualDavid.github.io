@@ -1,0 +1,15 @@
+https://pages.github.com/
+para subir paginas a github o proyectos propios
+creamos una rama con el nombre de usuario +github.io
+despues desplegamos en la carpeta de proyecto 
+
+git clone https://github.com/username/username.github.io
+git branch -M main
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+
+si queremos para una pag estatica dejamos esto en la misma carpeta que subimos con el nombre index.html
+si queremos multiples carpetas estaticas mejor crear una carpeta en el repositorio con nombre docs y meter 
+alli todas las webs e ir enlazando con link u opciones.
+solo funciona html js y css
